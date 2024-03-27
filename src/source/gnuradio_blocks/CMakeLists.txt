@@ -1,9 +1,11 @@
 set(SOURCE_BLOCKS_SOURCES
         Chirp.cpp
+        MatchedSpectrum.cpp
 )
 
 set(SOURCE_BLOCKS_HEADERS
         Chirp.h
+        MatchedSpectrum.h
 )
 
 list(SORT SOURCE_BLOCKS_SOURCES)

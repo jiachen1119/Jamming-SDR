@@ -21,8 +21,6 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
-    JammingType typeChoose();
-
 public slots:
     void onClickPushbutton();
 

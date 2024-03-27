@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
             this, [=](int index) {
                 if (index == 1)
                     ui->stackedWidget->setCurrentIndex(1);
+                else if (index == 2)
+                    ui->stackedWidget->setCurrentIndex(2);
                 else
                     ui->stackedWidget->setCurrentIndex(0);
             });
@@ -65,6 +67,11 @@ void MainWindow::onClickPushbutton() {
                 SawToothStruct in_struct =  {ui->lineEdit_sampleFreq->text().toDouble(),
                                             ui->lineEdit_WaveFreq->text().toDouble(),
                                             ui->lineEdit_Amplitude->text().toDouble()};
+                thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
+            }
+            else if (ui->comboBox_type->currentText() == "Matched Spectrum Interface"){
+                MatchedStruct in_struct =  {ui->lineEdit_MatchedSamp->text().toDouble(),
+                                             ui->lineEdit_MatchedChipRate->text().toDouble()};
                 thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
             }
             else{

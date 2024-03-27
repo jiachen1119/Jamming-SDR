@@ -94,6 +94,17 @@ ProcessThread::ProcessThread(QObject *parent, const FrontEnd &in_struct, SawToot
     topBlock_->connect(source_->get_right_block(),0,sink_->get_left_block(),0);
 }
 
+ProcessThread::ProcessThread(QObject *parent, const FrontEnd &in_struct, MatchedStruct jamming_struct) : QThread(parent) {
+    // the instantiation of top block is necessary
+    topBlock_ = gr::make_top_block("Jamming_SDR Flowgraph");
+    queue_ = std::make_shared<Concurrent_Queue<pmt::pmt_t>>();
+    sink_ = std::make_unique<OsmosdrSink>(1,0,in_struct,queue_.get());
+
+    source_ = std::make_unique<MatchedSpectrumJamming>(0,1,jamming_struct.sampling_freq,jamming_struct.chip_rate);
+    std::cout << "Matched Spectrum Jamming" << std::endl;
+    topBlock_->connect(source_->get_right_block(),0,sink_->get_left_block(),0);
+}
+
 void ProcessThread::run() {
 
     QThread::msleep(500);

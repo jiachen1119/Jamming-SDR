@@ -46,4 +46,9 @@ struct SawToothStruct{
     double ampl;
 };
 
+struct MatchedStruct{
+    double sampling_freq;
+    double chip_rate;
+};
+
 #endif //JAMMING_SDR_JAMMINGTYPE_H

@@ -9,6 +9,7 @@
 #include "OsmosdrSink.h"
 #include "SignalSource.h"
 #include "ChirpJamming.h"
+#include "MatchedSpectrumJamming.h"
 #include "Variable.h"
 #include <QObject>
 
@@ -21,6 +22,7 @@ public:
     ProcessThread(QObject *parent, const FrontEnd& in_struct, SquareStruct jamming_struct);
     ProcessThread(QObject *parent, const FrontEnd& in_struct, TriangeStruct jamming_struct);
     ProcessThread(QObject *parent, const FrontEnd& in_struct, SawToothStruct jamming_struct);
+    ProcessThread(QObject *parent, const FrontEnd& in_struct, MatchedStruct jamming_struct);
 
     void run() override;
     ~ProcessThread() override;

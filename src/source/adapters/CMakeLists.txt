@@ -1,6 +1,6 @@
 # set osmosdr variable
-list(APPEND SOURCE_ADAPTERS_SOURCES SignalSource.cpp ChirpJamming.cpp)
-list(APPEND SOURCE_ADAPTERS_HEADERS SignalSource.h ChirpJamming.h)
+list(APPEND SOURCE_ADAPTERS_SOURCES SignalSource.cpp ChirpJamming.cpp MatchedSpectrumJamming.cpp)
+list(APPEND SOURCE_ADAPTERS_HEADERS SignalSource.h ChirpJamming.h MatchedSpectrumJamming.h)
 
 add_library(source_adapters
         ${SOURCE_ADAPTERS_SOURCES}
