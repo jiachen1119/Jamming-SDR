@@ -10,6 +10,7 @@ target_link_libraries(process PUBLIC ${QT5_LIBRARIES} sink lib source_blocks sou
         Gnuradio::iio
         Gnuradio::runtime
         Gnuradio::analog
+        lib
 )
 target_include_directories(process
         PUBLIC ${PROJECT_SOURCE_DIR}/src/source/adapters

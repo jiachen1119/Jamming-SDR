@@ -28,7 +28,7 @@ public:
                  gr_complex offset,
                  float phase);
 
-    ~SignalSource() = default;
+    ~SignalSource() override = default;
 
     inline size_t item_size() override
     {

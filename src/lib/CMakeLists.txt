@@ -1,5 +1,5 @@
 aux_source_directory(. LIB_SOURCES)
-list(APPEND LIB_HEADERS ValveBlock.h concurrent_queue.h command_event.h BlockInterface.h)
+list(APPEND LIB_HEADERS ValveBlock.h concurrent_queue.h command_event.h BlockInterface.h Variable.h)
 
 if(USE_CMAKE_TARGET_SOURCES)
     add_library(lib STATIC)

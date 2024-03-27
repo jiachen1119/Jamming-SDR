@@ -65,5 +65,6 @@ target_link_libraries(Jamming_SDR
         Qt5::Gui
         Qt5::Widgets
         process
+        lib
 )
 

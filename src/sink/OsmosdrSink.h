@@ -37,6 +37,7 @@ typedef struct FrontEnd{
 class OsmosdrSink {
 public:
     OsmosdrSink(unsigned int instream, unsigned int outstream, Concurrent_Queue<pmt::pmt_t>* queue);
+    OsmosdrSink(unsigned int instream, unsigned int outstream, FrontEnd in, Concurrent_Queue<pmt::pmt_t>* queue);
     ~OsmosdrSink() = default;
 
     void connect(const gr::top_block_sptr& top_block);

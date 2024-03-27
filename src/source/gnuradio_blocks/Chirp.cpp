@@ -7,12 +7,12 @@
 
 using output_type = gr_complex;
 
-Chirp::Chirp(double samp_rate, double min_freq, double max_freq, double period)
+Chirp::Chirp(double samp_rate, double min_freq, double max_freq, double period, ChirpType type)
         : gr::sync_block("Chirp",
                          gr::io_signature::make(0, 0, 0),
                          gr::io_signature::make(
                                  1, 1, sizeof(output_type))),
-          type_(ChirpType::Trigonometric),
+          type_(type),
           samplingFrequency_(samp_rate),
           period_(period),
           maxFrequency_(max_freq),

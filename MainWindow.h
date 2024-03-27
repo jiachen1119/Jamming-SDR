@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 #include "ProcessThread.h"
+#include "Variable.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,8 @@ Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+
+    JammingType typeChoose();
 
 public slots:
     void onClickPushbutton();

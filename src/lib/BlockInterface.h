@@ -37,6 +37,7 @@ shared_ptr<C> make_shared(Args &&... args)
 class BlockInterface
 {
 public:
+    BlockInterface()= default;
     virtual ~BlockInterface() = default;
     virtual size_t item_size() = 0;
     virtual void connect(gr::top_block_sptr top_block) = 0;

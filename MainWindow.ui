@@ -35,22 +35,17 @@
          </item>
          <item>
           <property name="text">
-           <string>Square Wave</string>
+           <string>Square Interference</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Triangle</string>
+           <string>Triangle Interference</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Saw Tooth</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Const</string>
+           <string>Saw Tooth Interference</string>
           </property>
          </item>
          <item>
@@ -62,6 +57,9 @@
        </item>
        <item row="1" column="0" colspan="2">
         <widget class="QStackedWidget" name="stackedWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
          <widget class="QWidget" name="page">
           <layout class="QGridLayout" name="gridLayout_4">
            <item row="0" column="1">
@@ -195,21 +193,21 @@
        <item row="2" column="1">
         <widget class="QLineEdit" name="lineEdit_gain">
          <property name="text">
-          <string>20</string>
+          <string>10</string>
          </property>
         </widget>
        </item>
        <item row="3" column="1">
         <widget class="QLineEdit" name="lineEdit_IfGain">
          <property name="text">
-          <string>20</string>
+          <string>10</string>
          </property>
         </widget>
        </item>
        <item row="4" column="1">
         <widget class="QLineEdit" name="lineEdit_RfGain">
          <property name="text">
-          <string>20</string>
+          <string>10</string>
          </property>
         </widget>
        </item>

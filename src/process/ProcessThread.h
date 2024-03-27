@@ -8,13 +8,15 @@
 #include <QThread>
 #include "OsmosdrSink.h"
 #include "SignalSource.h"
-#include "Chirp.h"
+#include "ChirpJamming.h"
+#include "Variable.h"
 #include <QObject>
 
 class ProcessThread : public QThread{
 Q_OBJECT
 public:
     ProcessThread(QObject *parent);
+    ProcessThread(QObject *parent, const FrontEnd& in_struct, JammingType type);
 
     void run() override;
     ~ProcessThread() override;
@@ -28,7 +30,7 @@ private:
     std::shared_ptr<gr::top_block> topBlock_;
     std::shared_ptr<Concurrent_Queue<pmt::pmt_t>> queue_;
     std::shared_ptr<OsmosdrSink> sink_;
-    std::shared_ptr<SignalSource> source_;
+    std::shared_ptr<BlockInterface> source_;
 //    std::shared_ptr<Chirp> source_;
 };
 

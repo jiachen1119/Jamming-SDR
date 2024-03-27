@@ -19,12 +19,12 @@ enum ChirpType{
 class Chirp : public gr::sync_block{
 
 public:
-    Chirp(double samp_rate, double min_freq, double max_freq, double period);
+    Chirp(double samp_rate, double min_freq, double max_freq, double period, ChirpType type);
     ~Chirp() override;
 
-    static std::shared_ptr<Chirp> make(double samp_rate, double min_freq, double max_freq, double period)
+    static std::shared_ptr<Chirp> make(double samp_rate, double min_freq, double max_freq, double period, ChirpType type)
     {
-        return gnuradio::make_block_sptr<Chirp>(samp_rate, min_freq, max_freq, period);
+        return gnuradio::make_block_sptr<Chirp>(samp_rate, min_freq, max_freq, period, type);
     }
 
     // Where all the action really happens
