@@ -18,10 +18,6 @@ set(CMAKE_AUTOUIC ON)
 
 # finding package config is necessary
 include(FindPkgConfig)
-
-include_directories(src/sink)
-include_directories(src/lib)
-include_directories(src/source)
 include_directories(src/process)
 
 ##########################################
@@ -68,9 +64,6 @@ target_link_libraries(Jamming_SDR
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets
-        sink
-        lib
-        source
         process
 )
 
