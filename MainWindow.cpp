@@ -11,9 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
         QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
-    // thread_ must define as a private variable in instantiation
-    thread_ = std::make_unique<ProcessThread>(nullptr);
-
     ui->pushButton->setText(QStringLiteral("Start Jamming"));
     connect(ui->pushButton,&QPushButton::clicked, this,&MainWindow::onClickPushbutton);
 
@@ -24,13 +21,17 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::onClickPushbutton() {
-    if (!thread_->isRunning()){
+    if (!threadIsRunning_){
         ui->pushButton->setText(QStringLiteral("Stop Jamming"));
-        thread_->startTopBlock();
+        // thread_ must define as a private variable in instantiation
+        thread_ = std::make_unique<ProcessThread>(nullptr);
+        thread_->start();
+        threadIsRunning_ = true;
     } else
     {
         ui->pushButton->setText(QStringLiteral("Start Jamming"));
         thread_->stopTopBlock();
+        threadIsRunning_ = false;
     }
 
 }

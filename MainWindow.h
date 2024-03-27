@@ -26,6 +26,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<ProcessThread> thread_;
+    bool threadIsRunning_ = false;
 };
 
 

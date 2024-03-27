@@ -8,6 +8,8 @@
 #include <QThread>
 #include "OsmosdrSink.h"
 #include "SignalSource.h"
+#include "Chirp.h"
+#include <QObject>
 
 class ProcessThread : public QThread{
 Q_OBJECT
@@ -19,13 +21,15 @@ public:
 
     void startTopBlock();
     void stopTopBlock();
+    void lockTopBlock();
+    void unlockTopBlock();
 
 private:
     std::shared_ptr<gr::top_block> topBlock_;
     std::shared_ptr<Concurrent_Queue<pmt::pmt_t>> queue_;
     std::shared_ptr<OsmosdrSink> sink_;
     std::shared_ptr<SignalSource> source_;
-
+//    std::shared_ptr<Chirp> source_;
 };
 
 
