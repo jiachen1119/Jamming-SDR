@@ -31,7 +31,21 @@ void MainWindow::onClickPushbutton() {
                                            ui->lineEdit_Bandwidth->text().toDouble(),
                                            (ui->comboBox_agc->currentText() == "True")};
             // thread_ must define as a private variable in instantiation
-            thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,typeChoose());
+            if (ui->comboBox_type->currentText() == "Chirp Interference"){
+                ChirpStruct in_struct;
+                thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
+            }
+
+//            else if (ui->comboBox_type->currentText() == "Square Interference")
+//                return Square;
+//            else if (ui->comboBox_type->currentText() == "Triangle Interference")
+//                return Triangle;
+//            else if (ui->comboBox_type->currentText() == "Saw Tooth Interference")
+//                return SawTooth;
+            else{
+                SingleToneStruct in_struct;
+                thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
+            }
             thread_->start();
             threadIsRunning_ = true;
         }
@@ -43,17 +57,4 @@ void MainWindow::onClickPushbutton() {
         threadIsRunning_ = false;
     }
 
-}
-
-JammingType MainWindow::typeChoose() {
-    if (ui->comboBox_type->currentText() == "Chirp Interference")
-        return Chirp;
-    else if (ui->comboBox_type->currentText() == "Square Interference")
-        return Square;
-    else if (ui->comboBox_type->currentText() == "Triangle Interference")
-        return Triangle;
-    else if (ui->comboBox_type->currentText() == "Saw Tooth Interference")
-        return SawTooth;
-    else
-        return SingleTone;
 }

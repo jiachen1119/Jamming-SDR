@@ -4,6 +4,7 @@
 
 #ifndef JAMMING_SDR_JAMMINGTYPE_H
 #define JAMMING_SDR_JAMMINGTYPE_H
+#include "Chirp.h"
 
 typedef enum{
     SingleTone,
@@ -13,8 +14,18 @@ typedef enum{
     SawTooth
 }JammingType;
 
-typedef struct {
+struct ChirpStruct{
+    double sampling_freq;
+    double min_freq;
+    double max_freq;
+    double period;
+    ChirpType type;
+};
 
-}ChirpStruct;
+struct SingleToneStruct{
+    double sampling_freq;
+    double wave_freq;
+    double ampl;
+};
 
 #endif //JAMMING_SDR_JAMMINGTYPE_H

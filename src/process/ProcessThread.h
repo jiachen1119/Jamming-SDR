@@ -16,7 +16,8 @@ class ProcessThread : public QThread{
 Q_OBJECT
 public:
     ProcessThread(QObject *parent);
-    ProcessThread(QObject *parent, const FrontEnd& in_struct, JammingType type);
+    ProcessThread(QObject *parent, const FrontEnd& in_struct, ChirpStruct jamming_struct);
+    ProcessThread(QObject *parent, const FrontEnd& in_struct, SingleToneStruct jamming_struct);
 
     void run() override;
     ~ProcessThread() override;

@@ -16,3 +16,5 @@ else()
             ${LIB_HEADERS}
     )
 endif()
+
+target_link_libraries(lib source_blocks)
