@@ -12,7 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->pushButton->setText(QStringLiteral("Start Jamming"));
+    ui->stackedWidget->setCurrentIndex(0);
     connect(ui->pushButton,&QPushButton::clicked, this,&MainWindow::onClickPushbutton);
+    connect(ui->comboBox_type, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [=](int index) {
+                if (index == 1)
+                    ui->stackedWidget->setCurrentIndex(1);
+                else
+                    ui->stackedWidget->setCurrentIndex(0);
+            });
+
 }
 
 MainWindow::~MainWindow() {
@@ -32,18 +41,36 @@ void MainWindow::onClickPushbutton() {
                                            (ui->comboBox_agc->currentText() == "True")};
             // thread_ must define as a private variable in instantiation
             if (ui->comboBox_type->currentText() == "Chirp Interference"){
-                ChirpStruct in_struct;
+                ChirpStruct in_struct = {ui->lineEdit_chirpSamplingFreq->text().toDouble(),
+                                         ui->lineEdit_chirpMin->text().toDouble(),
+                                         ui->lineEdit_chirpMax->text().toDouble(),
+                                         ui->lineEdit_chirpPeriod->text().toDouble(),
+                                         ui->comboBox_chirpType->currentText()
+                };
                 thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
             }
-
-//            else if (ui->comboBox_type->currentText() == "Square Interference")
-//                return Square;
-//            else if (ui->comboBox_type->currentText() == "Triangle Interference")
-//                return Triangle;
-//            else if (ui->comboBox_type->currentText() == "Saw Tooth Interference")
-//                return SawTooth;
+            else if (ui->comboBox_type->currentText() == "Square Interference"){
+                SquareStruct in_struct =  {ui->lineEdit_sampleFreq->text().toDouble(),
+                                            ui->lineEdit_WaveFreq->text().toDouble(),
+                                            ui->lineEdit_Amplitude->text().toDouble()};
+                thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
+            }
+            else if (ui->comboBox_type->currentText() == "Triangle Interference"){
+                TriangeStruct in_struct =  {ui->lineEdit_sampleFreq->text().toDouble(),
+                                            ui->lineEdit_WaveFreq->text().toDouble(),
+                                            ui->lineEdit_Amplitude->text().toDouble()};
+                thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
+            }
+            else if (ui->comboBox_type->currentText() == "Saw Tooth Interference"){
+                SawToothStruct in_struct =  {ui->lineEdit_sampleFreq->text().toDouble(),
+                                            ui->lineEdit_WaveFreq->text().toDouble(),
+                                            ui->lineEdit_Amplitude->text().toDouble()};
+                thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
+            }
             else{
-                SingleToneStruct in_struct;
+                SingleToneStruct in_struct =  {ui->lineEdit_sampleFreq->text().toDouble(),
+                            ui->lineEdit_WaveFreq->text().toDouble(),
+                            ui->lineEdit_Amplitude->text().toDouble()};
                 thread_ = std::make_unique<ProcessThread>(nullptr,frontEndStruct,in_struct);
             }
             thread_->start();

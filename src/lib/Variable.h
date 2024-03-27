@@ -19,10 +19,28 @@ struct ChirpStruct{
     double min_freq;
     double max_freq;
     double period;
-    ChirpType type;
+    QString type;
 };
 
 struct SingleToneStruct{
+    double sampling_freq;
+    double wave_freq;
+    double ampl;
+};
+
+struct SquareStruct{
+    double sampling_freq;
+    double wave_freq;
+    double ampl;
+};
+
+struct TriangeStruct{
+    double sampling_freq;
+    double wave_freq;
+    double ampl;
+};
+
+struct SawToothStruct{
     double sampling_freq;
     double wave_freq;
     double ampl;

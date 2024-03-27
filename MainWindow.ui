@@ -50,9 +50,26 @@
          </item>
          <item>
           <property name="text">
-           <string/>
+           <string>Matched Spectrum Interface</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>TDM Matched Spectrum Interface</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>New Jamming</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Jamming Type</string>
+         </property>
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
@@ -86,7 +103,7 @@
            <item row="1" column="1">
             <widget class="QLineEdit" name="lineEdit_WaveFreq">
              <property name="text">
-              <string>1575.42e6</string>
+              <string>1000</string>
              </property>
             </widget>
            </item>
@@ -106,14 +123,87 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_2"/>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Jamming Type</string>
-         </property>
+         <widget class="QWidget" name="page_2">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEdit_chirpSamplingFreq">
+             <property name="text">
+              <string>4e6</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Sample Frequency (Hz)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Sweep Period (s)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Minimum Frequency (Hz)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Maximum Frequency (Hz)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>Sweep Type</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEdit_chirpMin">
+             <property name="text">
+              <string>10</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_chirpMax">
+             <property name="text">
+              <string>100000</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lineEdit_chirpPeriod">
+             <property name="text">
+              <string>10</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QComboBox" name="comboBox_chirpType">
+             <item>
+              <property name="text">
+               <string>Linear</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Non-linear</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
